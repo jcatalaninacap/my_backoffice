@@ -1,0 +1,24 @@
+{% load custom_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convertir JSON a Grid</title>
+</head>
+<body>
+    <form method="post">
+        {% csrf_token %}
+        <label for="json_input">Ingrese el JSON:</label>
+        <textarea id="json_input" name="json_input" rows="10" cols="50"></textarea>
+        <button type="submit">Convertir a Grid</button>
+    </form>
+
+    {% if json_data %}
+        {% render_json json_data %}
+    {% else %}
+        <p>No se ha recibido JSON</p>
+    {% endif %}
+</body>
+</html>

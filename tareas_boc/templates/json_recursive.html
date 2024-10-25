@@ -1,0 +1,14 @@
+{% if data %}
+    <ul>
+    {% for key, value in data.items %}
+        <li>
+            <strong>{{ key }}:</strong>
+            {% if value.items %}
+                {% render_json value %}
+            {% else %}
+                {{ value }}
+            {% endif %}
+        </li>
+    {% endfor %}
+    </ul>
+{% endif %}

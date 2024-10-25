@@ -1,0 +1,51 @@
+{% if data %}
+    <!-- Si es un diccionario, mostramos claves y valores -->
+    {% if data.items %}
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Clave</th>
+                    <th>Valor</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for key, value in data.items %}
+                    <tr>
+                        <td>{{ key }}</td>
+                        <td>
+                            {% if value.items or value %}
+                                {% include 'recursive_table.html' with data=value %}
+                            {% else %}
+                                {{ value }}
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    <!-- Si es una lista, mostramos los elementos con índice -->
+    {% elif data %}
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Índice</th>
+                    <th>Valor</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for index, item in data %}
+                    <tr>
+                        <td>{{ forloop.counter0 }}</td>
+                        <td>
+                            {% if item.items or item %}
+                                {% include 'recursive_table.html' with data=item %}
+                            {% else %}
+                                {{ item }}
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endif %}
