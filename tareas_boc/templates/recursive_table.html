@@ -1,8 +1,8 @@
 {% if data %}
     <!-- Si es un diccionario, mostramos claves y valores -->
     {% if data.items %}
-        <table border="1">
-            <thead>
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
                 <tr>
                     <th>Clave</th>
                     <th>Valor</th>
@@ -25,8 +25,8 @@
         </table>
     <!-- Si es una lista, mostramos los elementos con índice -->
     {% elif data %}
-        <table border="1">
-            <thead>
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
                 <tr>
                     <th>Índice</th>
                     <th>Valor</th>
